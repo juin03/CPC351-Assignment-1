@@ -23,4 +23,4 @@ head(data$no_of_ratings)
 
 str(data)
 
-fwrite(data, "Question3/Amazon_Products_Corrected.csv")
+fwrite(data, "Question3/temo/Amazon_Products_Corrected.csv")

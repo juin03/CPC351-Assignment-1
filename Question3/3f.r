@@ -1,6 +1,10 @@
 library(data.table)
 
-data <- fread("Question3/Amazon_Products_Corrected.csv")
+data <- fread("Question3/temo/Amazon_Products_Corrected.csv")
+
+data <- data[
+  !is.na(data$ratings),
+]
 
 categorize_ratings <- function(data) {
   # Filter ratings to include only values in the range of 0.0 to 5.0
@@ -23,3 +27,5 @@ categorize_ratings <- function(data) {
 data <- categorize_ratings(data)
 
 str(data)
+
+fwrite(data, "Question3/temo/Amazon_Products_Categorized.csv")

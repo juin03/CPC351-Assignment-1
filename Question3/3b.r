@@ -19,4 +19,4 @@ setcolorder(data, c("name", "manufacturer", setdiff(names(data), c("name", "manu
 
 str(data)
 
-fwrite(data, "Question3/Amazon_Products_All_Manufacturer.csv", row.names = FALSE)
+fwrite(data, "Question3/temo/Amazon_Products_All_Manufacturer.csv", row.names = FALSE)

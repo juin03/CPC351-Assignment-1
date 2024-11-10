@@ -8,3 +8,5 @@ summary <- data %>%
   arrange(desc(max_discount))
 
 print(summary)
+
+fwrite(summary, "Question3/temo/test.csv", row.names = FALSE)

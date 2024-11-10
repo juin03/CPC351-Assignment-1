@@ -18,7 +18,7 @@ print(file_list)
 combined_data <- do.call(rbind, lapply(file_list, fread))
 
 # Save the combined data into a new CSV file
-fwrite(combined_data, "./Question3/Amazon_Products_All.csv", row.names = FALSE)
+fwrite(combined_data, "./Question3/temo/Amazon_Products_All.csv", row.names = FALSE)
 
 # Count the total number of rows (samples)
 total_samples <- nrow(combined_data)

@@ -1,10 +1,15 @@
-data <- fread("Question3/Amazon_Products_Corrected.csv")
+library(data.table)
+
+data <- fread("Question3/temo/Amazon_Products_Corrected.csv")
 
 str(data)
 
 data <- data[
-  !is.na(data$actual_price) & !is.na(data$discount_price),
+  !is.na(data$actual_price),
 ]
+
+data$discount_price[is.na(data$discount_price)] <-
+  data$actual_price[is.na(data$discount_price)]
 
 head(data)
 
@@ -17,4 +22,6 @@ data$discount_percentage <-
 
 str(data)
 
-fwrite(data, "Question3/Amazon_Products_With_Discount.csv")
+nrow(data)
+
+fwrite(data, "Question3/temo/Amazon_Products_With_Discount.csv")
