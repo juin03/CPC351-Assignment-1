@@ -7,7 +7,11 @@ str(data)
 # Extract the first word from the 'name' column and store unique manufacturers
 data$manufacturer <- sapply(data$name, function(x) {
   words <- unlist(strsplit(x, " "))
-  words[1]
+  if (length(words) > 1 && grepl("^[0-9]+(\\.[0-9]+)?$", words[2])) {
+    words[1]
+  } else {
+    paste(words[1:2], collapse = " ")
+  }
 })
 
 # Reorder the columns to place 'manufacturer' next to 'name'
