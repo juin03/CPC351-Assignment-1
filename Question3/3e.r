@@ -21,9 +21,3 @@ write.csv(manufacturer_discount, "./Question3/Temp/5)Manufacturer_Summarised.csv
 # Check for the number of null (NA or empty) values in each column
 null_count <- sapply(combined_data5, function(x) sum(is.na(x) | x == "" | x == "NA"))
 print(null_count)
-
-# Print rows where discount_percentage is null
-null_discount_rows <- combined_data5 %>%
-  filter(is.na(discount_percentage) | discount_percentage == "" | discount_percentage == "NA")
-print(null_discount_rows)
-

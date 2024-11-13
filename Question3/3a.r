@@ -30,12 +30,12 @@ combined_data <- combined_data %>%
   )
 
 # 2. Assign actual_price to discount_price where discount_price is null
-combined_data$discount_price[is.na(combined_data$discount_price)] <- 
+combined_data$discount_price[is.na(combined_data$discount_price)] <-
   combined_data$actual_price[is.na(combined_data$discount_price)]
 
 # 3. Remove rows where actual_price is 0 or NA
 combined_data <- combined_data %>%
-  filter(!is.na(actual_price) & actual_price != 0)
+  filter(!is.na(actual_price))
 
 # 4. Set ratings and no_of_ratings to 0 where they are null
 combined_data <- combined_data %>%
@@ -50,4 +50,3 @@ write.csv(combined_data, "./Question3/Temp/1)Amazon_Products_All.csv", row.names
 # Check for the number of null values in each column
 null_count <- sapply(combined_data, function(x) sum(is.na(x) | x == "" | x == "NA"))
 print(null_count)
-

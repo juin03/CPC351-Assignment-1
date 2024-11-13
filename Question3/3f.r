@@ -29,4 +29,3 @@ print(rating_counts)
 # Check for the number of null (NA or empty) values in each column
 null_count <- sapply(combined_data6, function(x) sum(is.na(x) | x == "" | x == "NA"))
 print(null_count)
-

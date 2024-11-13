@@ -3,7 +3,7 @@ combined_data4 <- read.csv("./Question3/Temp/3)Cleaned_Data_Types.csv", stringsA
 
 # Few steps of cleaning are needed to be done
 # 1. Check if there are products with actual_price less than or equal to discount_price
-if (any(combined_data4$actual_price <= combined_data4$discount_price, na.rm = TRUE)) {
+if (any(combined_data4$actual_price < combined_data4$discount_price, na.rm = TRUE)) {
   warning("There are products with actual_price less than or equal to discount_price")
 }
 

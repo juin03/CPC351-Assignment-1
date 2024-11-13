@@ -34,3 +34,7 @@ combined_data2 <- combined_data2 %>% relocate(manufacturer, .after = name)
 
 # Save the combined data into a new CSV file
 write.csv(combined_data2, "./Question3/Temp/2)Manufacturer_Extracted.csv", row.names = FALSE)
+
+# Check for the number of null values in each column
+null_count <- sapply(combined_data2, function(x) sum(is.na(x) | x == "" | x == "NA"))
+print(null_count)
