@@ -1,38 +1,24 @@
-data <- fread("Question3/Amazon_Products_All_Manufacturer.csv")
-
-nrow(data)
-head(data)
-
-data$actual_price <-
-  iconv(data$actual_price, from = "latin1", to = "UTF-8")
-data$discount_price <-
-  iconv(data$discount_price, from = "latin1", to = "UTF-8")
-
-data$actual_price <- as.numeric(
-  gsub("[^0-9.]", "", data$actual_price)
-)
-data$discount_price <- as.numeric(
-  gsub("[^0-9.]", "", data$discount_price)
-)
-data$no_of_ratings <- as.integer(
-  gsub("[^0-9.]", "", data$no_of_ratings)
-)
-data$ratings <- as.numeric(data$ratings)
-
-head(data$no_of_ratings)
-
-str(data)
-
-fwrite(data, "Question3/Amazon_Products_Corrected.csv")
 library(dplyr)
+combined_data3 <- read.csv("./Question3/Temp/2)Manufacturer_Extracted.csv", stringsAsFactors = FALSE)
 
-data <- data %>%
-  mutate(discount_percentage = ((actual_price - discount_price) / actual_price) * 100) %>%
-  group_by(manufacturer) %>%
-  summarize(avg_discount = mean(discount_percentage, na.rm = TRUE)) %>%
-  arrange(desc(avg_discount))
+# Convert 'actual_price' and 'discount_price' to numeric (float)
+# gsub(pattern, replacement, x) replaces all occurrences of pattern in x with replacement
+# ^ inside square brackets negates the expression
+# "[^0-9.]" matches any character that is not a digit or a period
+# It removes all non-numeric characters except the decimal point
+combined_data3$actual_price <- as.numeric(gsub("[^0-9.]", "", combined_data3$actual_price))
+combined_data3$discount_price <- as.numeric(gsub("[^0-9.]", "", combined_data3$discount_price))
 
-top_manufacturer <- data %>%
-  slice(1)
+# Convert 'no_of_ratings' to integer
+# Remove commas from 'no_of_ratings' and convert it to integer
+combined_data3$no_of_ratings <- as.integer(gsub("[^0-9.]", "", combined_data3$no_of_ratings))
 
-print(top_manufacturer)
+# Convert 'ratings' to numeric (float)
+combined_data3$ratings <- as.numeric(combined_data2$ratings)
+
+# Save the combined data into a new CSV file
+write.csv(combined_data3, "./Question3/Temp/3)Cleaned_Data_Types.csv", row.names = FALSE)
+
+# Check for the number of null (NA or empty) values in each column
+null_count <- sapply(combined_data3, function(x) sum(is.na(x) | x == "" | x == "NA"))
+print(null_count)

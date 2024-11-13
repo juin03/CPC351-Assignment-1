@@ -1,3 +1,5 @@
-.vscode
-Data
-Question3/*.csv
+Question3/Temp/
+Data/
+Question1/separated_csv/
+*.csv
+Question1/complete.csv

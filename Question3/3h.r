@@ -1,17 +1,12 @@
-library(data.table)
+library(dplyr)
+combined_data8 <- read.csv("./Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
 
-data <- fread("Question3/Amazon_Products_With_Discount.csv")
+# Sort by number of ratings to find highest sales
+combined_data8 <- combined_data8 %>%
+  arrange(desc(no_of_ratings))
 
-# Determine the product with the highest no_of_ratings
-highest_no_of_ratings_product <- data[order(-no_of_ratings)][1]
+# Product with the highest sales
+highest_sales_product <- combined_data8[1, ]
+highest_sales_product
 
-# Sort the data in descending order of no_of_ratings
-sorted_data <- data[order(-no_of_ratings)]
-
-# Print the product with the highest no_of_ratings
-print(highest_no_of_ratings_product)
-
-# Print the sorted data
-print(sorted_data)
-
-fwrite(sorted_data, "Question3/Amazon_Products_Sorted_By_Sales.csv")
+write.csv(combined_data8, "./Question3/Temp/8)Arranged_by_Sales.csv", row.names = FALSE)

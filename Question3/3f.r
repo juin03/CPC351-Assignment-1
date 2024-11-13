@@ -1,25 +1,32 @@
-library(data.table)
+library(dplyr)
+combined_data6 <- read.csv("./Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
 
-data <- fread("Question3/Amazon_Products_Corrected.csv")
+# Filter ratings between 0.0 and 5.0
+combined_data6 <- combined_data6 %>%
+  filter(ratings >= 0 & ratings <= 5)
 
-categorize_ratings <- function(data) {
-  # Filter ratings to include only values in the range of 0.0 to 5.0
-  data <- data[data$ratings >= 0.0 & data$ratings <= 5.0, ]
+# Categorize ratings and overwrite the ratings column
+combined_data6 <- combined_data6 %>%
+  mutate(ratings = case_when(
+    ratings > 3.0 ~ "High",
+    ratings >= 1.5 & ratings <= 3.0 ~ "Medium",
+    ratings < 1.5 ~ "Low",
+    TRUE ~ "Unknown"  # In case there are missing ratings
+  ))
 
-  # Clean the 'ratings' column as needed (assuming it's numeric)
-  data$ratings <- as.numeric(data$ratings)
+# Save the combined data into a new CSV file
+write.csv(combined_data6, "./Question3/Temp/6)Ratings_Categorised.csv", row.names = FALSE)
 
-  # Categorize ratings
-  data$rating_category <- cut(data$ratings,
-    breaks = c(-Inf, 1.0, 1.5, 3.0, Inf),
-    labels = c("Low", "Medium", "Medium", "High"),
-    right = FALSE
-  )
+# Count the number of products in each rating category
+rating_counts <- combined_data6 %>%
+  group_by(ratings) %>%
+  summarise(count = n())
 
-  return(data)
-}
+# Print the results
+print("Number of products in each rating category:")
+print(rating_counts)
 
-# Apply the function to the data
-data <- categorize_ratings(data)
+# Check for the number of null (NA or empty) values in each column
+null_count <- sapply(combined_data6, function(x) sum(is.na(x) | x == "" | x == "NA"))
+print(null_count)
 
-str(data)

@@ -3,7 +3,9 @@ library(dplyr)
 library(data.table)
 
 # Set the path to the folder containing all 108 CSV files
-folder_path <- "Data/Amazon_Products"
+folder_path <- "./Data/AmazonProducts"
+
+dir.create("./Question3/Temp", showWarnings = FALSE)
 
 # Get a list of all CSV files in the folder
 # list.files() returns a character vector of the files from the folder
@@ -18,8 +20,8 @@ print(file_list)
 combined_data <- do.call(rbind, lapply(file_list, fread))
 
 # Save the combined data into a new CSV file
-fwrite(combined_data, "./Question3/Amazon_Products_All.csv", row.names = FALSE)
+write.csv(combined_data, "./Question3/Temp/1)Amazon_Products_All.csv", row.names = FALSE)
 
-# Count the total number of rows (samples)
-total_samples <- nrow(combined_data)
-print(paste("Total samples in the dataset:", total_samples))
+# Check for the number of null (NA or empty) values in each column
+null_count <- sapply(combined_data, function(x) sum(is.na(x) | x == "" | x == "NA"))
+print(null_count)

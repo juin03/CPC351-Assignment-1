@@ -15,7 +15,7 @@ plot <- ggplot(data, aes(x = Company, y = Revenue, fill = Company)) +
   labs(title = "Revenue Comparison between Walmart and Amazon in 2021",
        x = "Company",
        y = "Revenue (in billions USD)") +
-#   theme_minimal() +
+  theme_minimal() +
   theme(legend.position = "none")
 
 # Display the plot

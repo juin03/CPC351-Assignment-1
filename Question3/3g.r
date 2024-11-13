@@ -1,26 +1,26 @@
-library(data.table)
+library(dplyr)
+combined_data7 <- read.csv("./Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
 
-data <- fread("Question3/Amazon_Products_Corrected.csv")
+# Product with the highest price
+highest_price_product <- combined_data7[which.max(combined_data7$discount_price), ]
 
-# Identify the products with the highest and lowest prices
-highest_price_product <- data[which.max(data$actual_price)]
-lowest_price_product <- data[which.min(data$actual_price)]
+# Product with the lowest price (excluding 0 prices and 0 discount percentages)
+lowest_price_product <- combined_data7[which.min(combined_data7$discount_price[
+  combined_data7$discount_price > 0
+]), ]
 
-# Manufacturer of the product with the highest price
-highest_price_manufacturer <- highest_price_product$manufacturer
+# Calculate correlation between discount percentage and number of ratings
+# cor() computes the Pearson correlation coefficient, which measures the linear relationship between the two variables.
+# use = "complete.obs" specifies that rows with missing values should be excluded from the calculation.
+correlation <- cor(combined_data7$discount_percentage, combined_data7$no_of_ratings, use = "complete.obs")
 
-# Calculate the discount (assuming discount is calculated as Discount = Actual_Price - Discount_Price)
-data[, discount := actual_price - discount_price]
 
-# Analyze the relationship between the discount and the number of ratings
-discount_ratings_relationship <- lm(discount ~ ratings, data = data)
 
-# Print the results
-cat("Product with the highest price:\n")
-print(highest_price_product)
-cat("\nProduct with the lowest price:\n")
-print(lowest_price_product)
-cat("\nManufacturer of the product with the highest price:\n")
-print(highest_price_manufacturer)
-cat("\nSummary of the relationship between discount and number of ratings:\n")
-print(summary(discount_ratings_relationship))
+# Print the entire row for lowest & highest price product (removed the select statement)
+lowest_price_product_selected <- lowest_price_product
+highest_price_product_selected <- highest_price_product
+
+# Display results
+highest_price_product_selected 
+lowest_price_product_selected 
+correlation
