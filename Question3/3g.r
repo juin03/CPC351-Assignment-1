@@ -14,7 +14,8 @@ lowest_price_product <- combined_data7[which.min(combined_data7$discount_price[
 # use = "complete.obs" specifies that rows with missing values should be excluded from the calculation.
 correlation <- cor(combined_data7$discount_percentage, combined_data7$no_of_ratings, use = "complete.obs")
 
-
+# Try Spearman correlation to spot non-linear relationships
+spearman_cor <- cor(combined_data7$discount_percentage, combined_data7$no_of_ratings, use = "complete.obs", method = "spearman")
 
 # Print the entire row for lowest & highest price product (removed the select statement)
 lowest_price_product_selected <- lowest_price_product
@@ -23,4 +24,5 @@ highest_price_product_selected <- highest_price_product
 # Display results
 highest_price_product_selected 
 lowest_price_product_selected 
-correlation
+print(correlation)
+print(spearman_cor)
