@@ -6,8 +6,10 @@ combined_data2 <- read.csv("./Question3/Temp/1)Amazon_Products_All.csv", strings
 # Function to extract manufacturer name based on conditions
 extract_manufacturer <- function(name) {
   # Split the name into words
+  # unlist() converts the split result into a vector of words
   words <- unlist(strsplit(name, " "))
 
+  # 2 conditions to extract manufacturer name 
   # Case 1: If the first word is followed by a number, take only the first word
   if (length(words) > 1 && grepl("^[A-Za-z]+\\s?[0-9]", paste(words[1], words[2], sep = " "))) {
     return(words[1])

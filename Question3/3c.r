@@ -12,7 +12,7 @@ combined_data3$discount_price <- as.numeric(gsub("[^0-9.]", "", combined_data3$d
 # Convert 'no_of_ratings' to integer - remove commas first, then other non-numeric characters
 combined_data3$no_of_ratings <- as.integer(gsub("[^0-9.]", "", combined_data3$no_of_ratings))
 
-# convert to numeric
+# convert 'ratings' to numeric
 combined_data3$ratings <- as.numeric(combined_data3$ratings)
 
 # Set ratings and no_of_ratings to 0 where they are null
@@ -23,6 +23,8 @@ combined_data3 <- combined_data3 %>%
   )
 
 # Remove rows where actual_price is 0
+# filter() is used to filter rows based on a condition
+# %>%, is a pipe operator that is used to pass the result of one function as the input to the next function
 combined_data3 <- combined_data3 %>%
   filter(actual_price != 0)
 
