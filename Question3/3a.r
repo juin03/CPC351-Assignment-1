@@ -50,3 +50,7 @@ write.csv(combined_data, "./Question3/Temp/1)Amazon_Products_All.csv", row.names
 # Check for the number of null values in each column
 null_count <- sapply(combined_data, function(x) sum(is.na(x) | x == "" | x == "NA"))
 print(null_count)
+
+# Count the total number of rows (samples)
+total_samples <- nrow(combined_data)
+print(paste("Total samples in the dataset:", total_samples))
