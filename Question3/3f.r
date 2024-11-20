@@ -1,5 +1,8 @@
 library(dplyr)
-combined_data6 <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
+library(data.table)
+
+# Read CSV file
+combined_data6 <- fread("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
 
 # Filter ratings between 0.0 and 5.0
 combined_data6 <- combined_data6 %>%

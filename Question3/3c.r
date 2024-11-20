@@ -1,5 +1,8 @@
 library(dplyr)
-combined_data3 <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/2)Manufacturer_Extracted.csv", stringsAsFactors = FALSE)
+library(data.table)
+
+# Read CSV file
+combined_data3 <- fread("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/2)Manufacturer_Extracted.csv")
 
 # Convert 'actual_price' and 'discount_price' to numeric (float)
 # gsub(pattern, replacement, x) replaces all occurrences of pattern in x with replacement

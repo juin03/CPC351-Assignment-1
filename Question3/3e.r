@@ -1,5 +1,7 @@
 library(dplyr)
-combined_data5 <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
+library(data.table)
+
+combined_data5 <- fread("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/4)Discount_Percentage.csv")
 
 # Group by manufacturer and calculate average discount percentage
 # combined_data %>% pass the combined_data data frame to the group_by() function

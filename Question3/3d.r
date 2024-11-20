@@ -1,5 +1,6 @@
 library(dplyr)
-combined_data4 <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/3)Cleaned_Data_Types.csv", stringsAsFactors = FALSE)
+library(data.table)
+combined_data4 <- fread("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/3)Cleaned_Data_Types.csv")
 
 # Few steps of cleaning are needed to be done
 # 1. Check if there are products with actual_price less than or equal to discount_price

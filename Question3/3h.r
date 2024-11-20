@@ -1,5 +1,6 @@
 library(dplyr)
-combined_data8 <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
+library(data.table)
+combined_data8 <- fread("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
 
 # Sort by number of ratings to find highest sales
 combined_data8 <- combined_data8 %>%

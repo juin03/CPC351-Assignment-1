@@ -1,7 +1,8 @@
 library(dplyr)
+library(data.table)
 
 # Read CSV file
-combined_data2 <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/1)Amazon_Products_All.csv", stringsAsFactors = FALSE)
+combined_data2 <- fread("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/1)Amazon_Products_All.csv", stringsAsFactors = FALSE)
 
 # Function to extract manufacturer name based on conditions
 extract_manufacturer <- function(name) {
