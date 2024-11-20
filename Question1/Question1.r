@@ -135,10 +135,10 @@ if (identical(original, complete)) {
 
 # Initialize a counter for tracking the number of differences found
 difference_count <- 0
-max_differences <- 30
+max_differences <- 10
 
 # Loop through each row and column to find differences
-# only 30 differences are printed to avoid overwhelming the console
+# only 10 differences are printed to avoid overwhelming the console
 for (i in 1:min(nrow(original), nrow(complete))) {
   for (j in 1:min(ncol(original), ncol(complete))) {
     if (original[i, j] != complete[i, j]) {
@@ -176,7 +176,7 @@ column_classes <- rep("character", 24)  # Force all 24 columns to be read as cha
 separated_column_classes <- rep("character", 3)  # Force all 3 columns in split files to be character type
 
 # Read the CSV file using read.csv
-original <- read.csv("./Data/tracks_features.csv", colClasses = column_classes)
+original <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Data/tracks_features.csv", colClasses = column_classes)
 
 num_files <- 1
 rows_segment <- 5
@@ -246,7 +246,7 @@ for (i in 1:rows_segment) {
 # Save final combined data
 write.csv(all_data, "C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question1/complete2.csv", row.names = FALSE)
 
-complete2 <- read.csv("./Question1/complete2.csv", colClasses = column_classes)
+complete2 <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question1/complete2.csv", colClasses = column_classes)
 
 # Compare the content
 if (identical(original, complete2)) {
