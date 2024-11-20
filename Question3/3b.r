@@ -1,7 +1,7 @@
 library(dplyr)
 
 # Read CSV file
-combined_data2 <- read.csv("./Question3/Temp/1)Amazon_Products_All.csv", stringsAsFactors = FALSE)
+combined_data2 <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/1)Amazon_Products_All.csv", stringsAsFactors = FALSE)
 
 # Function to extract manufacturer name based on conditions
 extract_manufacturer <- function(name) {
@@ -35,7 +35,7 @@ combined_data2$manufacturer <- sapply(combined_data2$name, extract_manufacturer)
 combined_data2 <- combined_data2 %>% relocate(manufacturer, .after = name)
 
 # Save the combined data into a new CSV file
-write.csv(combined_data2, "./Question3/Temp/2)Manufacturer_Extracted.csv", row.names = FALSE)
+write.csv(combined_data2, "C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/2)Manufacturer_Extracted.csv", row.names = FALSE)
 
 # Check for the number of null values in each column
 null_count <- sapply(combined_data2, function(x) sum(is.na(x) | x == "" | x == "NA"))

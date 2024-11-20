@@ -3,9 +3,9 @@ library(dplyr)
 library(data.table)
 
 # Set the path to the folder containing all 108 CSV files
-folder_path <- "./Data/AmazonProducts"
+folder_path <- "C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Data/AmazonProducts"
 
-dir.create("./Question3/Temp", showWarnings = FALSE)
+dir.create("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp", showWarnings = FALSE)
 
 # Get a list of all CSV files in the folder
 # list.files() returns a character vector of the files from the folder

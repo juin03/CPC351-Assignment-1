@@ -1,5 +1,5 @@
 library(dplyr)
-combined_data7 <- read.csv("./Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
+combined_data7 <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
 
 # Product with the highest price
 highest_price_product <- combined_data7[which.max(combined_data7$discount_price), ]

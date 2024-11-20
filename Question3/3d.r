@@ -1,5 +1,5 @@
 library(dplyr)
-combined_data4 <- read.csv("./Question3/Temp/3)Cleaned_Data_Types.csv", stringsAsFactors = FALSE)
+combined_data4 <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/3)Cleaned_Data_Types.csv", stringsAsFactors = FALSE)
 
 # Few steps of cleaning are needed to be done
 # 1. Check if there are products with actual_price less than or equal to discount_price
@@ -22,5 +22,5 @@ combined_data4 <- combined_data4 %>%
   mutate(discount_percentage = round(((actual_price - discount_price) / actual_price) * 100, 2))
 
 # Save the combined data into a new CSV file
-write.csv(combined_data4, "./Question3/Temp/4)Discount_Percentage.csv", row.names = FALSE)
+write.csv(combined_data4, "C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/4)Discount_Percentage.csv", row.names = FALSE)
 

@@ -1,5 +1,5 @@
 library(dplyr)
-combined_data3 <- read.csv("./Question3/Temp/2)Manufacturer_Extracted.csv", stringsAsFactors = FALSE)
+combined_data3 <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/2)Manufacturer_Extracted.csv", stringsAsFactors = FALSE)
 
 # Convert 'actual_price' and 'discount_price' to numeric (float)
 # gsub(pattern, replacement, x) replaces all occurrences of pattern in x with replacement
@@ -29,7 +29,7 @@ combined_data3 <- combined_data3 %>%
   filter(actual_price != 0)
 
 # Save the combined data into a new CSV file
-write.csv(combined_data3, "./Question3/Temp/3)Cleaned_Data_Types.csv", row.names = FALSE)
+write.csv(combined_data3, "C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/3)Cleaned_Data_Types.csv", row.names = FALSE)
 
 # Check for the number of null (NA or empty) values in each column
 null_count <- sapply(combined_data3, function(x) sum(is.na(x) | x == "" | x == "NA"))

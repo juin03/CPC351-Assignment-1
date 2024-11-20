@@ -1,5 +1,5 @@
 library(dplyr)
-combined_data5 <- read.csv("./Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
+combined_data5 <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
 
 # Group by manufacturer and calculate average discount percentage
 # combined_data %>% pass the combined_data data frame to the group_by() function
@@ -16,7 +16,7 @@ top_discount_manufacturer <- manufacturer_discount[1, ]
 top_discount_manufacturer
 
 # Save the combined data into a new CSV file
-write.csv(manufacturer_discount, "./Question3/Temp/5)Manufacturer_Summarised.csv", row.names = FALSE)
+write.csv(manufacturer_discount, "C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/5)Manufacturer_Summarised.csv", row.names = FALSE)
 
 # Check for the number of null (NA or empty) values in each column
 null_count <- sapply(combined_data5, function(x) sum(is.na(x) | x == "" | x == "NA"))
