@@ -1,6 +1,6 @@
 library(dplyr)
 library(data.table)
-combined_data7 <- fread("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
+combined_data7 <- fread("Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
 
 # Product with the highest price
 highest_price_product <- combined_data7[which.max(combined_data7$discount_price), ]
@@ -25,7 +25,8 @@ highest_price_product_selected <- highest_price_product %>%
   select(name, manufacturer, discount_price)
 
 # Display results
-highest_price_product_selected
-lowest_price_product_selected 
-print(correlation)
-print(spearman_cor)
+print(lowest_price_product_selected)
+print(highest_price_product_selected)
+cat("Correlation between discount percentage and number of ratings (Pearson):", correlation, "\n")
+cat("Correlation between discount percentage and number of ratings (Spearman):", spearman_cor, "\n")
+
