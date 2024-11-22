@@ -42,35 +42,6 @@ Change the `setwd()` command to match your local project path:
 setwd("YOUR_PROJECT_PATH")
 ```
 
-## Questions Overview
-
-### Question 1
-Implements file splitting and recombination with two versions:
-- Basic Implementation (Version 1)
-- Data Type-Safe Implementation (Version 2)
-
-### Question 2
-Contains analysis scripts for:
-- Revenue comparison between Walmart and Amazon
-- Profitability classification system
-- Store traffic analysis
-- Member number estimation
-
-### Question 3
-Series of data processing and analysis scripts for Amazon product data:
-1. Data preprocessing and cleaning
-2. Manufacturer extraction
-3. Data type standardization
-4. Discount calculations
-5. Various analyses (ratings, sales, prices)
-
-## Project Structure
-
-- `Data/` - Contains input datasets
-- `Question1/` - File splitting implementation
-- `Question2/` - Revenue and profitability analysis
-- `Question3/` - Amazon product data analysis
-
 ## Requirements
 
 - R (version 4.0.0 or higher)
