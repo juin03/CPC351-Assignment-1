@@ -64,62 +64,29 @@ Series of data processing and analysis scripts for Amazon product data:
 4. Discount calculations
 5. Various analyses (ratings, sales, prices)
 
-## Installation
+## Project Structure
 
-1. Clone this repository:
-```bash
-git clone <repository-url>
-```
+- `Data/` - Contains input datasets
+- `Question1/` - File splitting implementation
+- `Question2/` - Revenue and profitability analysis
+- `Question3/` - Amazon product data analysis
 
-2. Install R (version 4.0.0 or higher recommended)
-   - Download from: https://cran.r-project.org/
+## Requirements
 
-## Dependencies
+- R (version 4.0.0 or higher)
+- Required packages:
+  - dplyr
+  - data.table
+  - ggplot2
 
-The project requires the following R packages:
-- dplyr (>= 1.0.0)
-- data.table (>= 1.14.0)
-- ggplot2 (>= 3.3.0)
-
-Install them using:
+Install packages using:
 
 ```r
 install.packages(c("dplyr", "data.table", "ggplot2"))
 ```
 
-## Expected Outputs
-
-The scripts will generate:
-- Separated CSV files in `Question1/separated_csv/` and `Question1/separated2_csv/`
-- Visualization plots for revenue comparison
-- Analysis results in the respective question folders
-
 ## Running the Scripts
 
-1. Ensure you have R installed
-2. Update the working directory as mentioned above
-3. Run the scripts in numerical order within each Question folder
-4. For Question 3, run scripts in alphabetical order (3a.r → 3b.r → etc.)
-```
-
-The README references the following code blocks for the working directory changes:
-
-```8:9:Question1/Question1.r
-# Set working directory
-setwd("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1")
-```
-
-
-
-```5:6:Question3/3a.r
-# Set working directory to your project root folder
-setwd("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1")
-```
-```
-
-## Running the Scripts
-
-1. Ensure you have R installed
-2. Update the working directory as mentioned above
-3. Run the scripts in numerical order within each Question folder
-4. For Question 3, run scripts in alphabetical order (3a.r → 3b.r → etc.)
+1. Update the working directory as mentioned above
+2. Run scripts in numerical order within each Question folder
+3. For Question 3, run scripts alphabetically (3a.r → 3b.r → etc.)
