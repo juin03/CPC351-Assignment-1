@@ -1,8 +1,8 @@
 library(dplyr)
 library(data.table)
 
-# Read CSV file using relative path
-combined_data6 <- fread("Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
+# Read CSV file
+combined_data6 <- fread("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/4)Discount_Percentage.csv", stringsAsFactors = FALSE)
 
 # Filter ratings between 0.0 and 5.0
 combined_data6 <- combined_data6 %>%
@@ -17,8 +17,8 @@ combined_data6 <- combined_data6 %>%
     TRUE ~ "Unknown"  # In case there are missing ratings
   ))
 
-# Save the combined data using relative path
-write.csv(combined_data6, "Question3/Temp/6)Ratings_Categorised.csv", row.names = FALSE)
+# Save the combined data into a new CSV file
+write.csv(combined_data6, "C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/6)Ratings_Categorised.csv", row.names = FALSE)
 
 # Count the number of products in each rating category
 rating_counts <- combined_data6 %>%

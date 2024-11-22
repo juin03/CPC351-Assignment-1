@@ -2,14 +2,14 @@
 library(dplyr)
 library(data.table)
 
-# Set working directory to your project root folder
-setwd("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1")
+# Set the path to the folder containing all 108 CSV files
+folder_path <- "C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Data/AmazonProducts"
 
-# Use relative paths for all file operations
-folder_path <- "Data/AmazonProducts"
-dir.create("Question3/Temp", showWarnings = FALSE)
+dir.create("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp", showWarnings = FALSE)
 
-# Get list of CSV files using relative path
+# Get a list of all CSV files in the folder
+# list.files() returns a character vector of the files from the folder
+# full.names = TRUE returns the full path to all of the files in the folder
 file_list <- list.files(path = folder_path, pattern = "*.csv", full.names = TRUE)
 
 print(file_list)
@@ -48,8 +48,8 @@ combined_data_cleaned <- combined_data_cleaned %>%
     no_of_ratings = ifelse(is.na(no_of_ratings), 0, no_of_ratings)
   )
 
-# Save the preprocessed data using relative path
-write.csv(combined_data_cleaned, "Question3/Temp/1)Amazon_Products_All.csv", row.names = FALSE)
+# Save the preprocessed data
+write.csv(combined_data_cleaned, "C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/1)Amazon_Products_All.csv", row.names = FALSE)
 
 # Check for the number of null values in each column after preprocessing
 null_count <- sapply(combined_data_cleaned, function(x) sum(is.na(x) | x == "" | x == "NA"))
