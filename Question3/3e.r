@@ -23,3 +23,5 @@ write.csv(manufacturer_discount, "C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Ass
 # Check for the number of null (NA or empty) values in each column
 null_count <- sapply(combined_data5, function(x) sum(is.na(x) | x == "" | x == "NA"))
 print(null_count)
+
+structure(combined_data5)

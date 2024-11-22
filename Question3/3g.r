@@ -18,12 +18,14 @@ correlation <- cor(combined_data7$discount_percentage, combined_data7$no_of_rati
 # Try Spearman correlation to spot non-linear relationships
 spearman_cor <- cor(combined_data7$discount_percentage, combined_data7$no_of_ratings, use = "complete.obs", method = "spearman")
 
-# Print the entire row for lowest & highest price product (removed the select statement)
-lowest_price_product_selected <- lowest_price_product
-highest_price_product_selected <- highest_price_product
+# Print only name, manufacturer and discount_price for lowest & highest price products
+lowest_price_product_selected <- lowest_price_product %>% 
+  select(name, manufacturer, discount_price)
+highest_price_product_selected <- highest_price_product %>% 
+  select(name, manufacturer, discount_price)
 
 # Display results
-highest_price_product_selected 
+highest_price_product_selected
 lowest_price_product_selected 
 print(correlation)
 print(spearman_cor)
