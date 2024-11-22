@@ -1,5 +1,15 @@
+# CODE VERSION 1: Basic Implementation ====
+
+# This section implements the basic file splitting and recombination approach
+# - Splits and recombines files without explicit data type handling
+# - Uses default type conversion during read/write operations
+# - Stores files in 'separated_csv' directory
+
+# Set working directory
+setwd("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1")
+
 # Read the original dataset
-original <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Data/tracks_features.csv")
+original <- read.csv("Data/tracks_features.csv")
 
 # Configuration parameters
 num_files <- 1               # Counter for sequential file naming
@@ -9,11 +19,10 @@ rows_per_file <- 250000     # Number of rows in each segment
 cols_per_file <- 3          # Number of columns in each segment
 
 # Create directory for storing split files if it doesn't exist
-dir.create("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question1/separated_csv", showWarnings = FALSE)
+dir.create("Question1/separated_csv", showWarnings = FALSE)
 
-#######################
-# PART 1: File Splitting
-#######################
+
+# PART 1: File Splitting =================
 # This section splits the original file both horizontally and vertically
 # - Creates a total of rows_segment * cols_segment files
 # - Each file contains a subset of rows and columns from the original
@@ -44,7 +53,7 @@ for (i in 1:rows_segment) {
 
     # Create filename with padding (e.g., spotify_01.csv) and save
     file_name <- sprintf("spotify_%02d.csv", num_files)
-    full_path <- file.path("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question1/separated_csv", file_name)
+    full_path <- file.path("Question1/separated_csv", file_name)
     write.csv(smaller_data, full_path, row.names = FALSE)
 
     # Print information about the created file
@@ -58,9 +67,8 @@ for (i in 1:rows_segment) {
   }
 }
 
-#######################
-# PART 2: File Recombination
-#######################
+
+# PART 2: File Recombination ====
 # This section reassembles the split files back into a single dataset
 # - First combines files horizontally within each row segment
 # - Then combines all row segments vertically
@@ -78,7 +86,7 @@ for (i in 1:rows_segment) {
     file_num <- (i - 1) * cols_segment + j
     
     # Read the corresponding file
-    file_name <- sprintf("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question1/separated_csv/spotify_%02d.csv", file_num)
+    file_name <- sprintf("Question1/separated_csv/spotify_%02d.csv", file_num)
     temp_data <- read.csv(file_name)
     
     # Combine columns using cbind (column bind)
@@ -100,11 +108,10 @@ for (i in 1:rows_segment) {
 }
 
 # Save final combined data
-write.csv(complete, "C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question1/complete.csv", row.names = FALSE)
+write.csv(complete, "Question1/complete.csv", row.names = FALSE)
 
-#######################
-# PART 3: Validation
-#######################
+
+# PART 3: Validation ====
 # This section performs various checks to ensure data integrity:
 # 1. Compares dimensions of original and combined datasets
 # 2. Verifies data types of all columns
@@ -135,10 +142,10 @@ if (identical(original, complete)) {
 
 # Initialize a counter for tracking the number of differences found
 difference_count <- 0
-max_differences <- 10
+max_differences <- 5
 
 # Loop through each row and column to find differences
-# only 10 differences are printed to avoid overwhelming the console
+# only 5 differences are printed to avoid overwhelming the console
 for (i in 1:min(nrow(original), nrow(complete))) {
   for (j in 1:min(ncol(original), ncol(complete))) {
     if (original[i, j] != complete[i, j]) {
@@ -149,11 +156,16 @@ for (i in 1:min(nrow(original), nrow(complete))) {
       # Increment the difference counter
       difference_count <- difference_count + 1
       
-      # Stop after printing the first 30 differences 
+      # Print message and break after showing max_differences
       if (difference_count >= max_differences) {
-        stop("Printed the first 30 differences. Stopping now.")
+        cat("Reached maximum number of differences to display. Stopping comparison.\n")
+        break  # Break from inner loop
       }
     }
+  }
+  # Break from outer loop if max differences reached
+  if (difference_count >= max_differences) {
+    break
   }
 }
 
@@ -162,9 +174,9 @@ if (difference_count == 0) {
   print("No differences found between the two data frames.")
 }
 
-#######################
-# CODE VERSION 2: Data Type-Safe Implementation
-#######################
+
+# CODE VERSION 2: Data Type-Safe Implementation ====
+
 # This version differs from the first implementation by:
 # 1. Enforcing character data types throughout the process
 # 2. Preventing automatic type conversion during file operations
@@ -176,7 +188,7 @@ column_classes <- rep("character", 24)  # Force all 24 columns to be read as cha
 separated_column_classes <- rep("character", 3)  # Force all 3 columns in split files to be character type
 
 # Read the CSV file using read.csv
-original <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Data/tracks_features.csv", colClasses = column_classes)
+original <- read.csv("Data/tracks_features.csv", colClasses = column_classes)
 
 num_files <- 1
 rows_segment <- 5
@@ -185,7 +197,7 @@ rows_per_file <- 250000
 cols_per_file <- 3
 
 # Create a new directory for this version to keep files separate from the first attempt
-dir.create("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question1/separated2_csv", showWarnings = FALSE)
+dir.create("Question1/separated2_csv", showWarnings = FALSE)
 
 # Split and write each segment
 
@@ -202,7 +214,7 @@ for (i in 1:rows_segment) {
     # Save each part as a separate CSV with leading zeros in file names
     file_name <- sprintf("spotify_%02d.csv", num_files)
     write.csv(smaller_data,
-              file.path("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question1/separated2_csv", file_name),
+              file.path("Question1/separated2_csv", file_name),
               row.names = FALSE)
     num_files <- num_files + 1
   }
@@ -222,7 +234,7 @@ for (i in 1:rows_segment) {
     file_num <- (i - 1) * cols_segment + j
 
     # Ensuring file name format is spotify_01.csv, etc.
-    file_name <- sprintf("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question1/separated2_csv/spotify_%02d.csv", file_num)
+    file_name <- sprintf("Question1/separated2_csv/spotify_%02d.csv", file_num)
 
     # Read file
     temp_data <- read.csv(file_name, colClasses = separated_column_classes)
@@ -244,9 +256,9 @@ for (i in 1:rows_segment) {
 }
 
 # Save final combined data
-write.csv(all_data, "C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question1/complete2.csv", row.names = FALSE)
+write.csv(all_data, "Question1/complete2.csv", row.names = FALSE)
 
-complete2 <- read.csv("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question1/complete2.csv", colClasses = column_classes)
+complete2 <- read.csv("Question1/complete2.csv", colClasses = column_classes)
 
 # Compare the content
 if (identical(original, complete2)) {

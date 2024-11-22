@@ -1,8 +1,8 @@
 library(dplyr)
 library(data.table)
 
-# Read CSV file
-combined_data3 <- fread("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/2)Manufacturer_Extracted.csv")
+# Read CSV file using relative path
+combined_data3 <- fread("Question3/Temp/2)Manufacturer_Extracted.csv")
 
 # Convert 'actual_price' and 'discount_price' to numeric (float)
 # gsub(pattern, replacement, x) replaces all occurrences of pattern in x with replacement
@@ -31,12 +31,19 @@ combined_data3 <- combined_data3 %>%
 combined_data3 <- combined_data3 %>%
   filter(actual_price != 0)
 
-# Save the combined data into a new CSV file
-write.csv(combined_data3, "C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1/Question3/Temp/3)Cleaned_Data_Types.csv", row.names = FALSE)
+# Save the combined data using relative path
+write.csv(combined_data3, "Question3/Temp/3)Cleaned_Data_Types.csv", row.names = FALSE)
 
 # Check for the number of null (NA or empty) values in each column
 null_count <- sapply(combined_data3, function(x) sum(is.na(x) | x == "" | x == "NA"))
 print(null_count)
+
+# Print datatypes of the numeric columns
+numeric_columns <- c("actual_price", "discount_price", "no_of_ratings", "ratings")
+print("Data types of the edited columns:")
+for (col in numeric_columns) {
+  print(paste(col, ":", class(combined_data3[[col]])))
+}
 
 # Count the total number of rows (samples)
 total_samples_3c <- nrow(combined_data3)
