@@ -1,6 +1,9 @@
 # Load the necessary library
 library(ggplot2)
 
+# Set working directory
+setwd("C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment 1")
+
 # Define the data for year 2021
 data <- data.frame(
   Company = c("Walmart", "Amazon"), # c is short for combine
@@ -15,12 +18,12 @@ plot <- ggplot(data, aes(x = Company, y = Revenue, fill = Company)) +
   labs(title = "Revenue Comparison between Walmart and Amazon in 2021",
        x = "Company",
        y = "Revenue (in billions USD)") +
-#   theme_minimal() +
+  theme_minimal() +
   theme(legend.position = "none")
 
 # Display the plot
 print(plot)
 
 # Save the plot as "1a.png" in the current working directory
-ggsave(filename = "./Question2/1a.png", plot = plot, width = 8, height = 6)
+ggsave(filename = "./Question2/2a.png", plot = plot, width = 8, height = 6)
 
