@@ -37,3 +37,7 @@ write.csv(combined_data3, "C:/Users/User/Desktop/USM/Y3/CPC351/CPC351 Assignment
 # Check for the number of null (NA or empty) values in each column
 null_count <- sapply(combined_data3, function(x) sum(is.na(x) | x == "" | x == "NA"))
 print(null_count)
+
+# Count the total number of rows (samples)
+total_samples_3c <- nrow(combined_data3)
+print(paste("Total samples:", total_samples_3c))
