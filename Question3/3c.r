@@ -42,6 +42,10 @@ print(null_count)
 total_samples_3c <- nrow(combined_data3)
 print(paste("Total samples:", total_samples_3c))
 
+# Print first 10 rows of the specified columns
+print("First 10 rows of the edited columns:")
+print(combined_data3[1:10, c("actual_price", "discount_price", "no_of_ratings", "ratings")])
+
 # Print datatypes of the 4 columns
 columns <- c("actual_price", "discount_price", "no_of_ratings", "ratings")
 print("Data types of numeric columns:")

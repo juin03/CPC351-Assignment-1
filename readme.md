@@ -31,10 +31,13 @@ This repository contains R scripts for analyzing various datasets including Amaz
 
 ## Important Note
 
-⚠️ Before running the scripts, you need to modify the working directory in the following files:
+⚠️ Before running the scripts, ensure you have:
 
-1. Question1.r (Line 9)
-2. 3a.r (Line 6)
+1. Added `tracks_features.csv` to the `Data` folder
+2. Added all 108 Amazon product CSV files to `Data/AmazonProducts` folder
+3. Modified the working directory in the following files:
+   - Question1.r (Line 9)
+   - 3a.r (Line 6)
 
 Change the `setwd()` command to match your local project path:
 

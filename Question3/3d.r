@@ -22,6 +22,12 @@ print(null_count)
 combined_data4 <- combined_data4 %>%
   mutate(discount_percentage = round(((actual_price - discount_price) / actual_price) * 100, 2))
 
+# Display first 10 rows of discount_price, actual_price, and discount_percentage
+combined_data4 %>%
+  select(discount_price, actual_price, discount_percentage) %>%
+  head(10) %>%
+  print()
+
 # Save the combined data into a new CSV file
 write.csv(combined_data4, "Question3/Temp/4)Discount_Percentage.csv", row.names = FALSE)
 
