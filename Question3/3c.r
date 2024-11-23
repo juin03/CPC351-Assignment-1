@@ -12,7 +12,7 @@ combined_data3 <- fread("Question3/Temp/2)Manufacturer_Extracted.csv")
 combined_data3$actual_price <- as.numeric(gsub("[^0-9.]", "", combined_data3$actual_price))
 combined_data3$discount_price <- as.numeric(gsub("[^0-9.]", "", combined_data3$discount_price))
 
-# Convert 'no_of_ratings' to integer - remove commas first, then other non-numeric characters
+# Convert 'no_of_ratings' to integer - removes all non-numeric characters except the decimal point
 combined_data3$no_of_ratings <- as.integer(gsub("[^0-9.]", "", combined_data3$no_of_ratings))
 
 # convert 'ratings' to numeric
@@ -46,5 +46,5 @@ print(paste("Total samples:", total_samples_3c))
 columns <- c("actual_price", "discount_price", "no_of_ratings", "ratings")
 print("Data types of numeric columns:")
 for (col in columns) {
-    print(paste(col, ":", class(combined_data3[[col]])))
+  print(paste(col, ":", class(combined_data3[[col]])))
 }
