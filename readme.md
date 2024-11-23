@@ -37,6 +37,7 @@ This repository contains R scripts for analyzing various datasets including Amaz
 2. Added all 108 Amazon product CSV files to `Data/AmazonProducts` folder
 3. Modified the working directory in the following files:
    - Question1.r (Line 9)
+   - 2a.r (Line 5)
    - 3a.r (Line 6)
 
 Change the `setwd()` command to match your local project path:
