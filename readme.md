@@ -1,16 +1,22 @@
-# Data Analysis Project
+# CPC351: Principle of Data Analytics Assignment 1
+## Team Members
 
-This repository contains R scripts for analyzing various datasets including Amazon product data and music tracks.
+- Lim Ting Juin (163634)
+- Lai Yicheng (163729)
+- Koay Chun Keat (164592)
+- Teh Hong Jun (164723)
+
+This repository contains R scripts for the assignment 1 of CPC351: Principle of Data Analytics.
 
 ## Project Structure
 
 ```
 ├── Data/
 │   ├── AmazonProducts/    # Amazon product CSV files
-│   └── tracks_features.csv # Music tracks dataset
+│   └── tracks_features.csv # Music tracks dataset - added manually
 ├── Question1/
-│   ├── separated_csv/     # Split CSV files (Version 1)
-│   ├── separated2_csv/    # Split CSV files (Version 2)
+│   ├── separated_csv/     # Split CSV files (Version 1) - generated after Question 1.r
+│   ├── separated2_csv/    # Split CSV files (Version 2) - generated after Question 1.r
 │   └── Question1.r        # File splitting implementation
 ├── Question2/
 │   ├── 2a.r              # Revenue comparison visualization
@@ -19,14 +25,14 @@ This repository contains R scripts for analyzing various datasets including Amaz
 │   └── 2d.r              # Member estimation
 ├── Question3/
 │   ├── Temp/             # Temporary processed files
-│   ├── 3a.r              # Data preprocessing
-│   ├── 3b.r              # Manufacturer extraction
-│   ├── 3c.r              # Data type cleaning
-│   ├── 3d.r              # Discount calculation
-│   ├── 3e.r              # Manufacturer analysis
-│   ├── 3f.r              # Rating categorization
-│   ├── 3g.r              # Price analysis
-│   └── 3h.r              # Sales analysis
+│   ├── 3a.r              # Combining Datasets from 108 CSV files
+│   ├── 3b.r              # Extract Manufacturing information
+│   ├── 3c.r              # Data Type Correction
+│   ├── 3d.r              # Calculate Discount Percentage
+│   ├── 3e.r              # Manufacturer with Highest Discount
+│   ├── 3f.r              # Ratings Categorisation
+│   ├── 3g.r              # Top and Lowest Pricing & Discount-Rating Analysis
+│   └── 3h.r              # Top Sales Product
 ```
 
 ## Important Note
